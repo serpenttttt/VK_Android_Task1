@@ -1,25 +1,31 @@
 package com.example.vk_task1_v2
 
+import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
 class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    val text = view.findViewById<TextView>(R.id.text)
-    val image = view.findViewById<ImageView>(R.id.image_view)
+    val image = view.findViewById<Button>(R.id.buttonNumbers)
 
     fun bind(number: Int) {
-        text.text = "$number"
-        if (number % 2 == 0) {
-            image.background = ColorDrawable(0xFFFF0000.toInt())
+        image.text = "$number"
+        val color = if (number % 2 == 0) {
+            Color.RED
+        } else {
+            Color.BLUE
         }
-        else {
-            image.background = ColorDrawable(0xFF0000FF.toInt())
+        image.setBackgroundColor(color)
+        image.setOnClickListener {
+            val intent = Intent(itemView.context, MySecondActivity::class.java)
+            intent.putExtra("ButtonColor", color)
+            intent.putExtra("ButtonText", image.text)
+            itemView.context.startActivity(intent)
         }
     }
-
 
 }

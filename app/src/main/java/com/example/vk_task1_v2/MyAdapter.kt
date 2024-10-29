@@ -38,3 +38,6 @@ class MyAdapter() : RecyclerView.Adapter<MyViewHolder>() {
         holder.bind(items[position])
     }
 }
+
+
+

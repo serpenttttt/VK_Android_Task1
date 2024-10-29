@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MySecondActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 
 
